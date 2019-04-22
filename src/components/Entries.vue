@@ -3,7 +3,7 @@
     <a-list-item slot="renderItem" slot-scope="item">
       <a-list-item-meta :description="item.description">
         <a slot="title" :href="item.source">{{item.name}}</a>
-        <a-avatar slot="avatar" src="favicon.ico"/>
+        <a-avatar slot="avatar" :src="getFavicon(item.source)"/>
       </a-list-item-meta>
     </a-list-item>
   </a-list>
@@ -11,7 +11,10 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { parse } from "url";
 import { ENTRIES_QUERY } from "@/queries/entries";
+
+const faviconParseUrl = "https://api.faviconkit.com/";
 
 export default Vue.extend({
   apollo: {
@@ -26,6 +29,12 @@ export default Vue.extend({
         pageSize: 20
       }
     };
+  },
+  methods: {
+    getFavicon(url: string) {
+      const hostname = parse(url).hostname;
+      return `${faviconParseUrl}${hostname}/144`;
+    }
   }
 });
 </script>
