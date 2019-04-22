@@ -1,6 +1,6 @@
 <template>
   <a-card>
-    <a-layout>
+    <a-layout v-if="ping">
       <a-layout-header>
         <search/>
       </a-layout-header>
@@ -8,15 +8,20 @@
         <entries/>
       </a-layout-content>
     </a-layout>
+    <div v-else style="margin-top: 12px;">Sorry, server is currently unavailable.</div>
   </a-card>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import { PING_QUERY } from "@/queries/ping";
 import Search from "@/components/Search.vue";
 import Entries from "@/components/Entries.vue";
 
 export default Vue.extend({
+  apollo: {
+    ping: PING_QUERY
+  },
   components: {
     Search,
     Entries
@@ -26,6 +31,7 @@ export default Vue.extend({
 
 <style>
 body {
+  text-align: center;
   padding: 10px;
   background-color: #fdfbfb !important;
 }
@@ -40,7 +46,6 @@ body {
 }
 .ant-layout-header,
 .ant-layout-content {
-  text-align: center;
   background-color: #fdfbfb !important;
   padding: 0px !important;
 }
