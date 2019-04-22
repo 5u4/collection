@@ -1,9 +1,8 @@
 import gql from "graphql-tag";
 
 export const ENTRIES_QUERY = gql`
-  query {
-    entries {
-      id
+  query($page: Int!) {
+    entries(pagination: { page: $page }) {
       name
       source
       description

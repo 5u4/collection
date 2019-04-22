@@ -37,7 +37,7 @@ body {
 }
 .ant-card {
   max-width: 800px;
-  margin: auto !important;
+  margin: 0 auto 10px auto !important;
   background-color: #fdfbfb !important;
 }
 .ant-card-body {
