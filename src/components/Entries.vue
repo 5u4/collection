@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="text-align: center">
     <a-list itemLayout="horizontal" :dataSource="entries">
       <a-list-item slot="renderItem" slot-scope="item">
         <a-list-item-meta :description="item.description">

@@ -31,7 +31,6 @@ export default Vue.extend({
 
 <style>
 body {
-  text-align: center;
   padding: 10px;
   background-color: #fdfbfb !important;
 }
