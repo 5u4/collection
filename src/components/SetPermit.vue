@@ -1,0 +1,41 @@
+<template></template>
+
+<script lang="ts">
+import Vue from "vue";
+import { SET_PERMIT_QUERY } from "@/queries/setPermit";
+
+export default Vue.extend({
+  created() {
+    this.processClipBoard();
+  },
+  methods: {
+    processClipBoard() {
+      const clipboard = (navigator as any).clipboard;
+
+      if (!clipboard) {
+        return;
+      }
+
+      clipboard.readText().then((text: string) => {
+        if (!/^secret:[\w-]*/.test(text)) {
+          return;
+        }
+
+        const token = text.substr(7);
+        this.setPermit(token);
+        clipboard.writeText("");
+      });
+    },
+    setPermit(token: string) {
+      this.$apollo.mutate({
+        mutation: SET_PERMIT_QUERY,
+        variables: {
+          token
+        }
+      });
+
+      location.reload();
+    }
+  }
+});
+</script>

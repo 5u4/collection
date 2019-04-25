@@ -27,6 +27,9 @@ export default Vue.extend({
         };
       },
       debounce: 300,
+      skip() {
+        return this.skip;
+      },
       update(data) {
         if (this.searchInput === "") {
           return [];
@@ -38,11 +41,13 @@ export default Vue.extend({
   },
   data() {
     return {
+      skip: true,
       searchInput: ""
     };
   },
   methods: {
     onSearch(value: string) {
+      this.skip = false;
       this.searchInput = value;
     },
     onSelect(url: string) {

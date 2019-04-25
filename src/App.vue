@@ -6,8 +6,11 @@
       </a-layout-header>
       <a-layout-content>
         <entries/>
-        <add/>
-        <add-suggest/>
+        <set-permit/>
+        <div v-if="permit">
+          <add/>
+          <add-suggest/>
+        </div>
       </a-layout-content>
     </a-layout>
     <div v-else style="margin-top: 12px;">Sorry, server is currently unavailable.</div>
@@ -17,20 +20,30 @@
 <script lang="ts">
 import Vue from "vue";
 import { PING_QUERY } from "@/queries/ping";
+import { PERMIT_QUERY } from "@/queries/permit";
 import Search from "@/components/Search.vue";
 import Entries from "@/components/Entries.vue";
 import Add from "@/components/Add.vue";
 import AddSuggest from "@/components/AddSuggest.vue";
+import SetPermit from "@/components/SetPermit.vue";
 
 export default Vue.extend({
   apollo: {
-    ping: PING_QUERY
+    ping: { query: PING_QUERY, errorPolicy: "all" },
+    permit: { query: PERMIT_QUERY, errorPolicy: "all" }
+  },
+  data() {
+    return {
+      ping: "umm",
+      permit: false
+    };
   },
   components: {
     Search,
     Entries,
     Add,
-    AddSuggest
+    AddSuggest,
+    SetPermit
   }
 });
 </script>
