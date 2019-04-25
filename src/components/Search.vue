@@ -1,16 +1,19 @@
 <template>
-  <a-select
-    showSearch
-    :value="searchInput"
-    @search="onSearch"
-    @select="onSelect"
-    :filterOption="false"
-    style="width: 100%"
-    :notFoundContent="null"
-  >
-    <a-icon slot="suffixIcon" type="smile"/>
-    <a-select-option v-for="entry in entries" :key="entry.source">{{entry.name}}</a-select-option>
-  </a-select>
+  <div style="text-align: center">
+    <a-avatar shape="square" src="http://localhost:8080/favicon.ico"/>
+    <a-select
+      showSearch
+      :value="searchInput"
+      @search="onSearch"
+      @select="onSelect"
+      :filterOption="false"
+      style="width: 70%; margin: 0 10px"
+      :notFoundContent="null"
+    >
+      <a-icon slot="suffixIcon" type="smile"/>
+      <a-select-option v-for="entry in entries" :key="entry.source">{{entry.name}}</a-select-option>
+    </a-select>
+  </div>
 </template>
 
 <script lang="ts">

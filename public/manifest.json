@@ -1,6 +1,6 @@
 {
-  "name": "dictionary",
-  "short_name": "dictionary",
+  "name": "collection",
+  "short_name": "collection",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
