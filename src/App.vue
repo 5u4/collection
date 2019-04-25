@@ -7,6 +7,7 @@
       <a-layout-content>
         <entries/>
         <add/>
+        <add-suggest/>
       </a-layout-content>
     </a-layout>
     <div v-else style="margin-top: 12px;">Sorry, server is currently unavailable.</div>
@@ -19,6 +20,7 @@ import { PING_QUERY } from "@/queries/ping";
 import Search from "@/components/Search.vue";
 import Entries from "@/components/Entries.vue";
 import Add from "@/components/Add.vue";
+import AddSuggest from "@/components/AddSuggest.vue";
 
 export default Vue.extend({
   apollo: {
@@ -27,7 +29,8 @@ export default Vue.extend({
   components: {
     Search,
     Entries,
-    Add
+    Add,
+    AddSuggest
   }
 });
 </script>
