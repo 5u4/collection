@@ -13,6 +13,11 @@ export default Vue.extend({
 
     this.processClipBoard();
   },
+  data() {
+    return {
+      exists: new Set()
+    };
+  },
   methods: {
     processClipBoard() {
       const clipboard = (navigator as any).clipboard;
@@ -22,10 +27,11 @@ export default Vue.extend({
       }
 
       clipboard.readText().then((text: string) => {
-        if (!text || !isUrl(text)) {
+        if (!text || !isUrl(text) || this.exists.has(text)) {
           return;
         }
 
+        this.exists.add(text);
         this.openNotification(text);
       });
     },
