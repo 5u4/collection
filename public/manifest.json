@@ -1,6 +1,6 @@
 {
-  "name": "collection",
-  "short_name": "collection",
+  "name": "Collection",
+  "short_name": "Collection",
   "icons": [
     {
       "src": "./img/icons/android-chrome-192x192.png",
@@ -15,6 +15,6 @@
   ],
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#000000",
+  "background_color": "#FF59A9",
   "theme_color": "#FF59A9"
 }
