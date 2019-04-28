@@ -6,6 +6,12 @@ import { SET_PERMIT_QUERY } from "@/queries/setPermit";
 
 export default Vue.extend({
   created() {
+    const url = window.location.href.split("?");
+
+    if (url.length < 2 || url[1] !== "permit") {
+      return;
+    }
+
     this.processClipBoard();
   },
   methods: {
